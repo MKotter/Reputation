@@ -3,6 +3,5 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="C:/Users/might_000/Downloads/bukkit-1.6.2-R0.1-20130715.060132-5.jar"/>
-	<classpathentry kind="lib" path="C:/Users/might_000/Downloads/SQLibrary.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,31 +1,33 @@
 package com.towo.MKotter.Reputation;
 
-import java.util.logging.Logger;
+import java.util.HashMap;
+import java.util.Map;
 
-import lib.PatPeter.SQLibrary.Database;
-import lib.PatPeter.SQLibrary.SQLite;
-
-import org.bukkit.event.EventHandler;
+import org.bukkit.event.Listener;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Reputation extends JavaPlugin {
+import com.towo.MKotter.Reputation.Util.SLAPI;
+
+public class Reputation extends JavaPlugin {	
 	
-	private Database sql;
-	
-	
+	Map<String, Integer> playerRep = new HashMap<String, Integer>();
+
 	@Override
 	public void onDisable() {
+		try {
+            SLAPI.save(playerRep,"plugins/Reputation/rep.dat");
+        } catch (Exception e) {
+        }
 	}
 	
+	@SuppressWarnings("unchecked")
 	@Override
 	public void onEnable() {
-		sql = new SQLite(Logger.getLogger("Minecraft"),
-				"[MyPlugin] ",
-				this.getDataFolder().getAbsolutePath()
-				"MyPlugin",
-				".sqlite");
-		if (sql.open()) {
-			
-		}
+		getServer().getPluginManager().registerEvents((Listener) this, this);
+		try {
+            playerRep = (HashMap<String, Integer>)SLAPI.load("plugins/Reptuation/rep.dat");
+        } catch (Exception e) {
+        }
 	}
+	
 }
